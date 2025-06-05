@@ -141,6 +141,7 @@ function GamePage() {
       <div>Solution: {solution}</div>
       <div>Trials left: {6 - trials}</div>
       <div>Solved: {`${isSolved}`}</div>
+<input />
       <div className="board">
         {words.map((word, index) => {
           return (
