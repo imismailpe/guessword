@@ -1,0 +1,166 @@
+"use client";
+import React, { useEffect, useReducer, useRef, useState } from "react";
+import Row from "../components/Row";
+import { CHAR_LEN } from "../utils/constants";
+import gameReducer from "../reducers/game";
+
+function GamePage() {
+  const [solution, setSolution] = useState([]);
+  const currentGuess = useRef("");
+  const currentWord = useRef(0);
+  const currentChar = useRef(0);
+  const defaultWord = Array(CHAR_LEN).fill("_");
+  const defaultWords = [
+    {
+      id: 0,
+      text: defaultWord,
+    },
+    {
+      id: 1,
+      text: defaultWord,
+    },
+    {
+      id: 2,
+      text: defaultWord,
+    },
+    {
+      id: 3,
+      text: defaultWord,
+    },
+    {
+      id: 4,
+      text: defaultWord,
+    },
+    {
+      id: 5,
+      text: defaultWord,
+    },
+  ];
+
+  const [highScore, setHighScore] = useState(0);
+  const [isSolved, setIsSolved] = useState(false);
+
+  const [words, dispatch] = useReducer(gameReducer, defaultWords);
+  const [trials, setTrials] = useState(0);
+
+  const getSolution = async () => {
+    const res = await fetch(
+      `https://random-word-api.vercel.app/api?words=1&length=${CHAR_LEN}`
+    );
+    const respJson = await res.json();
+    setSolution(respJson[0].split(""));
+  };
+  const resetGame = () => {
+    currentWord.current = 0;
+    currentChar.current = 0;
+    currentGuess.current = "";
+    setTrials(0);
+    dispatch({
+      type: "RESET",
+    });
+    getSolution();
+    setIsSolved(false);
+  };
+
+  const updateStatus = () => {
+    const isSolvedNow = solution.every((letter, position) => {
+      console.log(
+        "inside status",
+        letter,
+        position,
+        words.some((word) => word.text[position] === letter)
+      );
+      return words.some((word) => word.text[position] === letter);
+    });
+    setIsSolved(isSolvedNow);
+    const newHigh = highScore + 1;
+    localStorage.setItem("guesswordHigh", newHigh);
+    setHighScore(newHigh);
+  };
+  const updateWords = () => {
+    const letters = [];
+    for (let char of currentGuess.current) {
+      letters.push(char);
+    }
+    let letterCount = letters.length;
+    while (letterCount < CHAR_LEN) {
+      letters.push("_");
+      letterCount++;
+    }
+    dispatch({
+      type: "UPDATE",
+      payload: {
+        position: currentWord.current,
+        data: letters,
+      },
+    });
+  };
+
+  const handleKey = (e) => {
+    if (trials >= 6 || isSolved) {
+      return;
+    }
+    const { keyCode, key } = e;
+    if (keyCode === 13 && currentChar.current === CHAR_LEN) {
+      setTrials(trials + 1);
+      currentChar.current = 0;
+      currentWord.current += 1;
+      currentGuess.current = "";
+    } else if (
+      currentChar.current < CHAR_LEN &&
+      keyCode > 64 &&
+      keyCode < 91
+    ) {
+      //65 to 90 ATOZ
+      currentGuess.current += key;
+      updateWords(currentWord.current);
+      currentChar.current += 1;
+    } else if (keyCode === 8) {
+      //backspace
+      if (currentGuess.current.length) {
+        currentGuess.current = currentGuess.current.slice(0, -1);
+        updateWords();
+        currentChar.current -= 1;
+      }
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [trials, isSolved]);
+  useEffect(() => {
+    getSolution();
+  }, []);
+  useEffect(() => {
+   if(trials > 0){
+     updateStatus();
+   }
+  }, [trials]);
+  return (
+    <div className="px-4 py-4">
+      <div>Solution: {solution}</div>
+      <div>Trials left: {6 - trials}</div>
+      <div>Solved: {`${isSolved}`}</div>
+      <div className="board">
+        {words.map((word, index) => {
+          return (
+            <Row
+              key={word.id}
+              word={word.text}
+              solution={solution}
+              isCurrent={currentWord.current === index}
+            />
+          );
+        })}
+      </div>
+      <button
+        className="flex items-center bg-blue-300 px-3 py-2 text-white"
+        onClick={resetGame}
+      >
+        Reset
+      </button>
+    </div>
+  );
+}
+
+export default GamePage;
