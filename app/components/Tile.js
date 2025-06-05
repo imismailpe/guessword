@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Tile({ char, resultClass }) {
+function Tile({ char, resultClass, isEditing }) {
   return (
-    <div className={'tile ' + resultClass}>{char}</div>
+    <div className={'tile ' + resultClass} contenteditable={`${isEditing}`}>{char}</div>
   )
 }
 

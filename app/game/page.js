@@ -106,11 +106,7 @@ function GamePage() {
       currentChar.current = 0;
       currentWord.current += 1;
       currentGuess.current = "";
-    } else if (
-      currentChar.current < CHAR_LEN &&
-      keyCode > 64 &&
-      keyCode < 91
-    ) {
+    } else if (currentChar.current < CHAR_LEN && keyCode > 64 && keyCode < 91) {
       //65 to 90 ATOZ
       currentGuess.current += key;
       updateWords(currentWord.current);
@@ -132,15 +128,17 @@ function GamePage() {
     getSolution();
   }, []);
   useEffect(() => {
-   if(trials > 0){
-     updateStatus();
-   }
+    if (trials > 0) {
+      updateStatus();
+    }
   }, [trials]);
   return (
-    <div className="px-4 py-4">
-      <div>Solution: {solution}</div>
-      <div>Trials left: {6 - trials}</div>
-      <div>Solved: {`${isSolved}`}</div>
+    <div className="px-4 py-4 flex items-center flex-col gap-2 ">
+      <div className="flex flex-col gap-1 items-center">
+        <div>Solution: {solution}</div>
+        <div>Trials left: {6 - trials}</div>
+        <div>Solved: {`${isSolved}`}</div>
+      </div>
       <div className="board">
         {words.map((word, index) => {
           return (
@@ -149,16 +147,29 @@ function GamePage() {
               word={word.text}
               solution={solution}
               isCurrent={currentWord.current === index}
+              currentChar={currentChar.current}
             />
           );
         })}
       </div>
       <button
-        className="flex items-center bg-blue-300 px-3 py-2 text-white"
+        className="flex items-center bg-blue-300 px-3 py-2 text-white rounded"
         onClick={resetGame}
       >
         Reset
       </button>
+      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
+        <div className="flex gap-[8px]">
+          <div className="tile correct">A</div> Letter is in exact position
+        </div>
+        <div className="flex gap-[8px]">
+          <div className="tile close">B</div> Letter is present but not in exact
+          position
+        </div>
+        <div className="flex gap-[8px]">
+          <div className="tile incorrect">C</div> Letter is not present
+        </div>
+      </footer>
     </div>
   );
 }
