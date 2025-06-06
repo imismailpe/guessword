@@ -64,13 +64,7 @@ function GamePage() {
 
   const updateStatus = () => {
     const isSolvedNow = solution.every((letter, position) => {
-      console.log(
-        "inside status",
-        letter,
-        position,
-        words.some((word) => word.text[position] === letter)
-      );
-      return words.some((word) => word.text[position] === letter);
+      return words.some((word) => word.text[position].toLowerCase() === letter.toLowerCase());
     });
     setIsSolved(isSolvedNow);
     const newHigh = highScore + 1;
@@ -138,6 +132,7 @@ function GamePage() {
         <div>Solution: {solution}</div>
         <div>Trials left: {6 - trials}</div>
         <div>Solved: {`${isSolved}`}</div>
+        <div>Highest: {highScore}</div>
       </div>
       <div className="board">
         {words.map((word, index) => {
