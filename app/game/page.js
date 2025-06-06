@@ -158,8 +158,18 @@ function GamePage() {
       >
         Reset
       </button>
-      <div className="flex items-center flex-wrap justify-center">
-        {ALPHABETS.map(alpha => <button key={alpha.ascii} onClick={() => handleKey({ key: alpha.letter, keyCode: alpha.ascii })} className="border border-gray-400 rounded p-2 w-auto h-10 flex items-center justify-center text-center bg-gray-200 focus:outline-none">{alpha.letter}</button>)}
+      <div className="flex items-center flex-wrap justify-center gap-[2px]">
+        {ALPHABETS.map((alpha) => (
+          <button
+            key={alpha.ascii}
+            onClick={() =>
+              handleKey({ key: alpha.letter, keyCode: alpha.ascii })
+            }
+            className="border border-gray-400 rounded p-2 w-auto min-w-[10px] h-10 hover:bg-gray-200 flex items-center justify-center text-center focus:outline-none"
+          >
+            {alpha.letter}
+          </button>
+        ))}
       </div>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <div className="flex gap-[8px]">
