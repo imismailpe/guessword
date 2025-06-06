@@ -7,9 +7,9 @@ function Row({ word, solution, isCurrent, currentChar }) {
     // const solutionPosition = index % CHAR_LEN;
     const resultClass = isCurrent || char === "_"
       ? ""
-      : solution[index] === word[index]
+      : solution[index].toLowerCase() === word[index].toLowerCase()
       ? "correct"
-      : solution.includes(char)
+      : solution.includes(char.toLowerCase())
       ? "close"
       : "incorrect";
 
