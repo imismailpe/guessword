@@ -50,6 +50,10 @@ function GamePage() {
     const respJson = await res.json();
     setSolution(respJson[0].split(""));
   };
+  const restoreHighest = () => {
+    const highestCache = localStorage.getItem("guesswordHigh");
+    setHighScore(highestCache || 0);
+  }
   const resetGame = () => {
     currentWord.current = 0;
     currentChar.current = 0;
@@ -120,6 +124,7 @@ function GamePage() {
   }, [trials, isSolved]);
   useEffect(() => {
     getSolution();
+    restoreHighest();
   }, []);
   useEffect(() => {
     if (trials > 0) {
@@ -129,7 +134,6 @@ function GamePage() {
   return (
     <div className="px-4 py-4 flex items-center flex-col gap-2 ">
       <div className="flex flex-col gap-1 items-center">
-        <div>Solution: {solution}</div>
         <div>Trials left: {6 - trials}</div>
         <div>Solved: {`${isSolved}`}</div>
         <div>Highest: {highScore}</div>
