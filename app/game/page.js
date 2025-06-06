@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useReducer, useRef, useState } from "react";
 import Row from "../components/Row";
-import { CHAR_LEN } from "../utils/constants";
+import { ALPHABETS, CHAR_LEN } from "../utils/constants";
 import gameReducer from "../reducers/game";
 
 function GamePage() {
@@ -158,6 +158,9 @@ function GamePage() {
       >
         Reset
       </button>
+      <div className="flex items-center flex-wrap justify-center">
+        {ALPHABETS.map(alpha => <button key={alpha.ascii} onClick={() => handleKey({ key: alpha.letter, keyCode: alpha.ascii })} className="border border-gray-400 rounded p-2 w-auto h-10 flex items-center justify-center text-center bg-gray-200 focus:outline-none">{alpha.letter}</button>)}
+      </div>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <div className="flex gap-[8px]">
           <div className="tile correct">A</div> Letter is in exact position
