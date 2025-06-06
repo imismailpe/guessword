@@ -52,7 +52,7 @@ function GamePage() {
   };
   const restoreHighest = () => {
     const highestCache = localStorage.getItem("guesswordHigh");
-    setHighScore(highestCache || 0);
+    setHighScore(parseInt(highestCache || 0, 10));
   }
   const resetGame = () => {
     currentWord.current = 0;
@@ -134,8 +134,8 @@ function GamePage() {
   return (
     <div className="px-4 py-4 flex items-center flex-col gap-2 ">
       <div className="flex flex-col gap-1 items-center">
+        <div>{isSolved ? "Won" : "In progress"}</div>
         <div>Trials left: {6 - trials}</div>
-        <div>Solved: {`${isSolved}`}</div>
         <div>Highest: {highScore}</div>
       </div>
       <div className="board">
