@@ -138,7 +138,7 @@ function GamePage() {
   return (
     <div className="px-4 py-4 flex items-center flex-col gap-2 ">
       <div className="flex gap-4 items-center justify-evenly">
-        <div className="font-semibold">{isSolved ? "Won!" : "In progress"}</div>
+        <div className="font-semibold">{isSolved ? "Won!" : trials===0? "Lost" : "In progress"}</div>
         <div>Trials left: {6 - trials}</div>
         <div className="font-semibold">Highest: {highScore}</div>
       </div>
