@@ -172,14 +172,14 @@ function GamePage() {
         ))}
       </div>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <div className="flex gap-[8px]">
+        <div className="flex gap-[8px] items-center justify-center">
           <div className="tile correct">A</div> Letter is in exact position
         </div>
-        <div className="flex gap-[8px]">
+        <div className="flex gap-[8px] items-center justify-center">
           <div className="tile close">B</div> Letter is present but not in exact
           position
         </div>
-        <div className="flex gap-[8px]">
+        <div className="flex gap-[8px] items-center justify-center">
           <div className="tile incorrect">C</div> Letter is not present
         </div>
       </footer>
