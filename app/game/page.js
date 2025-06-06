@@ -53,7 +53,7 @@ function GamePage() {
   const restoreHighest = () => {
     const highestCache = localStorage.getItem("guesswordHigh");
     setHighScore(parseInt(highestCache || 0, 10));
-  }
+  };
   const resetGame = () => {
     currentWord.current = 0;
     currentChar.current = 0;
@@ -68,12 +68,16 @@ function GamePage() {
 
   const updateStatus = () => {
     const isSolvedNow = solution.every((letter, position) => {
-      return words.some((word) => word.text[position].toLowerCase() === letter.toLowerCase());
+      return words.some(
+        (word) => word.text[position].toLowerCase() === letter.toLowerCase()
+      );
     });
     setIsSolved(isSolvedNow);
-    const newHigh = highScore + 1;
-    localStorage.setItem("guesswordHigh", newHigh);
-    setHighScore(newHigh);
+    if (isSolvedNow) {
+      const newHigh = highScore + 1;
+      localStorage.setItem("guesswordHigh", newHigh);
+      setHighScore(newHigh);
+    }
   };
   const updateWords = () => {
     const letters = [];

@@ -47,12 +47,12 @@ body {
   text-transform: uppercase;
 }
 .close{
-  background-color: rgb(240, 201, 103);
+  background-color: rgb(253, 222, 82);
   border: 2px solid rgb(211, 142, 39);
 }
 .correct{
-  background-color: rgb(88, 219, 147);
-  border: 2px solid green;
+  background-color: rgb(181, 216, 57);
+  border: 2px solid rgb(122, 170, 45);
 }
 .incorrect{
   background-color: rgb(245, 111, 87);
