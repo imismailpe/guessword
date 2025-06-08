@@ -191,16 +191,16 @@ function GamePage() {
           Delete
         </button>
       </div>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
+      <footer className="row-start-3 flex gap-[12px] flex-wrap items-center justify-center">
         <div className="flex gap-[8px] items-center justify-center">
-          <div className="tile correct">A</div> Letter is in exact position
+          <div className="tile tile-sm correct">A</div> Letter is in exact position
         </div>
         <div className="flex gap-[8px] items-center justify-center">
-          <div className="tile close">B</div> Letter is present but not in exact
+          <div className="tile tile-sm close">B</div> Letter is present but not in exact
           position
         </div>
         <div className="flex gap-[8px] items-center justify-center">
-          <div className="tile incorrect">C</div> Letter is not present
+          <div className="tile tile-sm incorrect">C</div> Letter is not present
         </div>
       </footer>
       <button
