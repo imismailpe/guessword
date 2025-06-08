@@ -140,9 +140,8 @@ function GamePage() {
       <h4 className="font-semibold text-2xl">Guess Word</h4>
       <div className="flex gap-4 items-center justify-evenly">
         <div className="font-semibold">
-          {isSolved ? "Won!" : trials === 6 ? "Lost" : "In progress"}
+          {isSolved ? "Won!" : trials === 6 ? "Lost" : `Trials left: ${6 - trials}`}
         </div>
-        <div>Trials left: {6 - trials}</div>
         {trials === 6 ? (
           <div className="font-semibold solution">Solution: {solution}</div>
         ) : null}
