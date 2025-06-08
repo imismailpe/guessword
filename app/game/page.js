@@ -175,14 +175,14 @@ function GamePage() {
         <button
           key={13}
           onClick={() => handleKey({ key: "Enter", keyCode: 13 })}
-          className="border border-gray-400 rounded p-2 w-auto min-w-[10px] h-10 bg-green-200 hover:bg-gray-200 flex items-center justify-center text-center focus:outline-none"
+          className="border border-gray-400 rounded p-2 w-auto min-w-[10px] h-10 bg-green-300 hover:bg-gray-200 flex items-center justify-center text-center focus:outline-none"
         >
           Enter
         </button>
         <button
           key={8}
           onClick={() => handleKey({ key: "Delete", keyCode: 8 })}
-          className="border border-gray-400 rounded p-2 w-auto min-w-[10px] h-10 bg-red-200 hover:bg-gray-200 flex items-center justify-center text-center focus:outline-none"
+          className="border border-gray-400 rounded p-2 w-auto min-w-[10px] h-10 bg-red-300 hover:bg-gray-200 flex items-center justify-center text-center focus:outline-none"
         >
           Delete
         </button>
