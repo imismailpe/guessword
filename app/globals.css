@@ -46,14 +46,14 @@ body {
   text-transform: uppercase;
   font-size: 18px;
   font-weight: 600;
-  border-radius: 12px;
+  border-radius: 6px;
 }
 .tile-sm{
   width: 32px;
   height: 32px;
 }
 .close{
-  background-color: rgb(253, 222, 82);
+  background-color: rgb(233, 200, 48);
   border: 2px solid rgb(211, 142, 39);
 }
 .correct{
