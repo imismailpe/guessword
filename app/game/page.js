@@ -137,9 +137,13 @@ function GamePage() {
   }, [trials]);
   return (
     <div className="px-4 py-4 flex items-center flex-col gap-2 ">
+      <h4 className="font-semibold">Guess Word</h4>
       <div className="flex gap-4 items-center justify-evenly">
-        <div className="font-semibold">{isSolved ? "Won!" : trials===6? "Lost" : "In progress"}</div>
+        <div className="font-semibold">
+          {isSolved ? "Won!" : trials === 6 ? "Lost" : "In progress"}
+        </div>
         <div>Trials left: {6 - trials}</div>
+        {trials === 6 ? <div className="font-semibold solution">Solution: {solution}</div> : null}
         <div className="font-semibold">Highest: {highScore}</div>
       </div>
       <div className="board">
@@ -159,7 +163,7 @@ function GamePage() {
         className="flex items-center bg-blue-300 px-3 py-2 text-white rounded"
         onClick={resetGame}
       >
-        Reset
+        New Game
       </button>
       <div className="flex items-center flex-wrap justify-center gap-[2px]">
         {ALPHABETS.map((alpha) => (
