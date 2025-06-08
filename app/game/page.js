@@ -143,7 +143,9 @@ function GamePage() {
           {isSolved ? "Won!" : trials === 6 ? "Lost" : "In progress"}
         </div>
         <div>Trials left: {6 - trials}</div>
-        {trials === 6 ? <div className="font-semibold solution">Solution: {solution}</div> : null}
+        {trials === 6 ? (
+          <div className="font-semibold solution">Solution: {solution}</div>
+        ) : null}
         <div className="font-semibold">Highest: {highScore}</div>
       </div>
       <div className="board">
@@ -159,12 +161,6 @@ function GamePage() {
           );
         })}
       </div>
-      <button
-        className="flex items-center bg-blue-300 px-3 py-2 text-white rounded"
-        onClick={resetGame}
-      >
-        New Game
-      </button>
       <div className="flex items-center flex-wrap justify-center gap-[2px]">
         {ALPHABETS.map((alpha) => (
           <button
@@ -178,6 +174,12 @@ function GamePage() {
           </button>
         ))}
       </div>
+      <button
+        className="flex items-center bg-blue-300 px-3 py-2 text-white rounded"
+        onClick={resetGame}
+      >
+        New Game
+      </button>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <div className="flex gap-[8px] items-center justify-center">
           <div className="tile correct">A</div> Letter is in exact position
