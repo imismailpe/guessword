@@ -140,7 +140,11 @@ function GamePage() {
       <h4 className="font-semibold text-2xl">Guess Word</h4>
       <div className="flex gap-4 items-center justify-evenly">
         <div className="font-semibold">
-          {isSolved ? "Won!" : trials === 6 ? "Lost" : `Trials left: ${6 - trials}`}
+          {isSolved
+            ? "Won!"
+            : trials === 6
+            ? "Lost"
+            : `Trials left: ${6 - trials}`}
         </div>
         {trials === 6 ? (
           <div className="font-semibold solution">Solution: {solution}</div>
@@ -175,24 +179,18 @@ function GamePage() {
         <button
           key={13}
           onClick={() => handleKey({ key: "Enter", keyCode: 13 })}
-          className="border border-gray-400 rounded p-2 w-auto min-w-[10px] h-10 bg-green-300 hover:bg-gray-200 flex items-center justify-center text-center focus:outline-none"
+          className="border border-gray-400 rounded p-2 w-auto min-w-[10px] h-10 bg-green-400 hover:bg-gray-200 flex items-center justify-center text-center focus:outline-none"
         >
           Enter
         </button>
         <button
           key={8}
           onClick={() => handleKey({ key: "Delete", keyCode: 8 })}
-          className="border border-gray-400 rounded p-2 w-auto min-w-[10px] h-10 bg-red-300 hover:bg-gray-200 flex items-center justify-center text-center focus:outline-none"
+          className="border border-gray-400 rounded p-2 w-auto min-w-[10px] h-10 bg-orange-300 hover:bg-gray-200 flex items-center justify-center text-center focus:outline-none"
         >
           Delete
         </button>
       </div>
-      <button
-        className="flex items-center bg-blue-400 px-3 py-2 text-white rounded"
-        onClick={resetGame}
-      >
-        New Game
-      </button>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <div className="flex gap-[8px] items-center justify-center">
           <div className="tile correct">A</div> Letter is in exact position
@@ -205,6 +203,12 @@ function GamePage() {
           <div className="tile incorrect">C</div> Letter is not present
         </div>
       </footer>
+      <button
+        className="flex items-center bg-blue-400 px-3 py-2 text-white rounded"
+        onClick={resetGame}
+      >
+        New Game
+      </button>
     </div>
   );
 }
