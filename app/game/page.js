@@ -151,7 +151,7 @@ function GamePage() {
         ) : null}
         <div className="font-semibold">Highest: {highScore}</div>
       </div>
-      <div className="board">
+      <div className="board text-shadow-lg">
         {words.map((word, index) => {
           return (
             <Row
