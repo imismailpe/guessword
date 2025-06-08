@@ -28,8 +28,5 @@ export const ALPHABETS = [
   { letter: 'X', ascii: 88 },
   { letter: 'Y', ascii: 89 },
   { letter: 'Z', ascii: 90 },
-  { letter: 'Enter', ascii: 13 },
-  { letter: 'Delete', ascii: 8 },
-
 ];
 

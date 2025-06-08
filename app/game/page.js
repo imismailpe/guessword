@@ -161,21 +161,35 @@ function GamePage() {
           );
         })}
       </div>
-      <div className="flex items-center flex-wrap justify-center gap-[2px]">
+      <div className="flex items-center flex-wrap justify-center gap-[4px]">
         {ALPHABETS.map((alpha) => (
           <button
             key={alpha.ascii}
             onClick={() =>
               handleKey({ key: alpha.letter, keyCode: alpha.ascii })
             }
-            className="border border-gray-400 rounded p-2 w-auto min-w-[10px] h-10 hover:bg-gray-200 flex items-center justify-center text-center focus:outline-none"
+            className="border border-gray-400 rounded p-2 w-auto min-w-[40px] h-10 hover:bg-gray-200 flex items-center justify-center text-center focus:outline-none"
           >
             {alpha.letter}
           </button>
         ))}
+        <button
+          key={13}
+          onClick={() => handleKey({ key: "Enter", keyCode: 13 })}
+          className="border border-gray-400 rounded p-2 w-auto min-w-[10px] h-10 bg-green-200 hover:bg-gray-200 flex items-center justify-center text-center focus:outline-none"
+        >
+          Enter
+        </button>
+        <button
+          key={8}
+          onClick={() => handleKey({ key: "Delete", keyCode: 8 })}
+          className="border border-gray-400 rounded p-2 w-auto min-w-[10px] h-10 bg-red-200 hover:bg-gray-200 flex items-center justify-center text-center focus:outline-none"
+        >
+          Delete
+        </button>
       </div>
       <button
-        className="flex items-center bg-blue-300 px-3 py-2 text-white rounded"
+        className="flex items-center bg-blue-400 px-3 py-2 text-white rounded"
         onClick={resetGame}
       >
         New Game
