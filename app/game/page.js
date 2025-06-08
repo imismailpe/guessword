@@ -137,7 +137,7 @@ function GamePage() {
   }, [trials]);
   return (
     <div className="px-4 py-4 flex items-center flex-col gap-2 ">
-      <h4 className="font-semibold">Guess Word</h4>
+      <h4 className="font-semibold text-2xl">Guess Word</h4>
       <div className="flex gap-4 items-center justify-evenly">
         <div className="font-semibold">
           {isSolved ? "Won!" : trials === 6 ? "Lost" : "In progress"}
