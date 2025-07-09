@@ -25,6 +25,27 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+<div className="flex p-4">
+  🎯 Word Guess Game – Test Your Vocabulary Skills!
+
+Put your word skills to the test with Word Guess Game, a fun and addictive game where every letter counts! Whether you're a casual player or a word puzzle pro, this game challenges your brain and sharpens your vocabulary one word at a time.
+
+🧠 How to Play:
+
+Guess the hidden word by entering letters or words.
+
+Get instant feedback: correct letters in the right place, wrong place, or not in the word at all.
+
+Use logic, memory, and deduction to crack the word within limited attempts!
+
+🌟 Features:
+
+Clean, minimal design for smooth gameplay
+
+Great for all ages — perfect for learning and fun
+
+🔤 Play solo or challenge friends — how many words can you guess right?
+  </div>
       </body>
     </html>
   );
