@@ -1,4 +1,5 @@
-## This is a word guessing game. You have find a mystery word in six attempts. You can enter letters to get hints if the letter is present on exact position or in a different position.
+## This is a word guessing game in English.
+You have to find a mystery word in six attempts. You can enter letters to get hints if the letter is present on exact position or in a different position. Beat highscores and improve your Language and Logical skills
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
